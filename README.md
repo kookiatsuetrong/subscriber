@@ -1,2 +1,4 @@
 # subscriber
-Demo from CODESTAR
+
+ตัวอย่าง Startup แบบ Subscription Model
+
