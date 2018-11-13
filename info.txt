@@ -1,0 +1,32 @@
+Create Ubuntu Server on Google Cloud Platform. Assuming the IP Address is 123.123.123.123
+
+Click on SSH button, and execute the following commands:
+
+sudo apt update
+sudo apt install npm
+sudo npm install n -g
+sudo n latest
+node -v
+
+mkdir web
+cd web
+npm install express ejs
+
+sudo apt install mysql-server
+sudo mysql
+create user james identified by 'bond';
+create database web default charset 'UTF8';
+grant all on web.* to james;
+exit;
+mysql --user james --password
+(พิมพ์รหัสผ่านจะมองไม่เห็น *)
+use web;
+create table service(
+  id     int unique not null auto_increment,
+  name   varchar(200) not null,
+  price  float
+);
+insert into service(name,price) values('ข้าวหอมมะลิ 5 กิโลกรัม', 190.0);
+insert into service(name,price) values('นมสด UHT 2 ลิตร', 95.0);
+
+
