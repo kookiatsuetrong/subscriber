@@ -29,4 +29,16 @@ create table service(
 insert into service(name,price) values('ข้าวหอมมะลิ 5 กิโลกรัม', 190.0);
 insert into service(name,price) values('นมสด UHT 2 ลิตร', 95.0);
 
+create table member(
+  id      int unique not null auto_increment,
+  phone   varchar(20) unique not null,
+  name    varchar(200) not null,
+  address varchar(800) not null
+);
 
+create table subscribe(
+  member  int,
+  service int,
+  first_day varchar(80) not null,
+  next    int
+);
