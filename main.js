@@ -10,11 +10,15 @@ server.listen(80)
 server.get('/apply', showApplyPage)
 
 function showApplyPage(req, res) {
-  var conn = mysql.createConnection(database)
-  conn.connect()
-  conn.query('select * from service', function(error, data) {
-    // res.send(data) // for web service
-    res.render('apply.html', {service: data})
-    conn.end()
-  })
+  if (req.query.phone == null) {
+    var conn = mysql.createConnection(database)
+    conn.connect()
+    conn.query('select * from service', function(error, data) {
+      // res.send(data) // for web service
+      res.render('apply.html', {service: data})
+      conn.end()
+    })
+  } else {
+    res.send(req.query)
+  }
 }

@@ -1,8 +1,9 @@
-<%= service[0].name %> <br>
-<%= service[1].name %>
-
-<select>
+<form>
   <% for (var i of service) { %>
-       <option><%= i.name %></option>
+       <input type='checkbox' name='service[<%= i.id %>]'>
+       <%= i.name %> ( <%= i.price %> บาท )<br>
   <% } %>
-</select>
+  <input name='name'><br>
+  <input name='phone'><br>
+  <button>สมัครสมาชิก</button>
+</form>
