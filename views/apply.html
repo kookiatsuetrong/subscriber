@@ -1,2 +1,8 @@
 <%= service[0].name %> <br>
 <%= service[1].name %>
+
+<select>
+  <% for (var i of service) { %>
+       <option><%= i.name %></option>
+  <% } %>
+</select>
