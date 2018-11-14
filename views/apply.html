@@ -10,8 +10,12 @@
     <div class='container'>
       <form>
       <% for (var i of service) { %>
-        <input type='checkbox' name='service-<%= i.id %>'>
-        <%= i.name %> ( <%= i.price %> บาท )<br>
+        <input type='checkbox' 
+          name='service-<%= i.id %>'
+            id='service-<%= i.id %>'>
+        <label for='service-<%= i.id %>'>
+          <%= i.name %> ( <%= i.price %> บาท )
+        </label> <br>
       <% } %>
         <input name='name' 
           placeholder='ชื่อ' 
