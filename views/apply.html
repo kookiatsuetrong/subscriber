@@ -9,6 +9,7 @@
   <body>
     <div class='container'>
       <form>
+      <h3>โปรดเลือกบริการที่ต้องจัดส่ง</h3>
       <% for (var i of service) { %>
         <input type='checkbox' 
           name='service-<%= i.id %>'
@@ -23,11 +24,14 @@
         <input name='phone' 
           placeholder='หมายเลขโทรศัพท์'
           class='form-control'>
+        <textarea name='address'
+          placeholder='ที่อยู่สำหรับจัดส่งสินค้า'
+          class='form-control'></textarea>
         <button class='btn btn-primary'>สมัครสมาชิก</button>
       </form>
       <style>
         form { max-width: 640px; }
-        input { margin-bottom: 8px; }
+        input,textarea { margin-bottom: 8px; }
       </style>
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
