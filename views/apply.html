@@ -16,13 +16,16 @@
                       'พฤษภาคม','มิถุนายน','กรกฎาคม','สิงหาคม',
                       'กันยายน', 'ตุลาคม','พฤศจิกายน','ธันวาคม']
       %>
-      <% for (var i of service) { %>
+      <% for (var i in service) { %>
         <div class='form-row'>
+          <input name='available[<%= i %>]' 
+                 value='<%= service[i].id %>'
+                 type='hidden'>
           <input type='checkbox' 
-            name='service-<%= i.id %>'
-            id='service-<%= i.id %>'>
-          <label for='service-<%= i.id %>'>
-            <%= i.name %> ( <%= i.price %> บาท )
+            name='service=[<%= i %>]'
+            id='service-<%= i %>'>
+          <label for='service-<%= i %>'>
+            <%= service[i].name %> ( <%= service[i].price %> บาท )
           </label>
         </div>
         <div class='form-row'>
