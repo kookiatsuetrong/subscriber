@@ -5,6 +5,7 @@ var ejs      = require('ejs')
 var mysql    = require('mysql')
 var database = { host:'localhost', database: 'web',
                  user:'james',     password: 'bond'}
+var pool     = mysql.createPool(database)
 var bodyParser = require('body-parser')
 var readBody   = bodyParser.urlencoded({extended:true})
 server.engine('html', ejs.renderFile)
@@ -28,14 +29,20 @@ function saveMemberData(req, res) {
   if (phone == '') {
     res.redirect('/apply')
   } else {
-    var sql = "insert into member(phone,name,address) values" +
-              "(?,?,?)"
-    var data = [phone, name, address]
-    var conn = mysql.createConnection(database)
-    conn.connect()
-    conn.query(sql, data, function() {
-      conn.end()
-      // เก็บข้อมูลแต่ละบริการเข้า Table
+    pool.query('select * from member where phone=?', [phone], function(e,r) {
+      if (r.length == 0) { // เป็นเบอร์โทรศัพท์ใหม่
+        var sql = "insert into member(phone,name,address) values" +
+                  "(?,?,?)"
+        var data = [phone, name, address]
+        pool.query(sql, data, function(error, result) {
+          saveService(req, res, result.insertId)
+        })
+      } else { // เบอร์โทรศัพท์เคยสมัครมาแล้ว r[0].id
+        saveService(req, res, r[0].id)
+      }
     })
   }
+}
+function saveService(req, res, id) {
+  res.send(req.body)
 }
