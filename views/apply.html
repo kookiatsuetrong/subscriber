@@ -10,6 +10,10 @@
     <div class='container'>
       <form>
       <h3>โปรดเลือกบริการที่ต้องจัดส่ง</h3>
+      <% var month = ['มกราคม','กุมภาพันธ์','มีนาคม','เมษายน',
+                      'พฤษภาคม','มิถุนายน','กรกฎาคม','สิงหาคม',
+                      'กันยายน', 'ตุลาคม','พฤศจิกายน','ธันวาคม']
+      %>
       <% for (var i of service) { %>
         <input type='checkbox' 
           name='service-<%= i.id %>'
@@ -17,6 +21,20 @@
         <label for='service-<%= i.id %>'>
           <%= i.name %> ( <%= i.price %> บาท )
         </label> <br>
+        <select name='first-day'>
+        </select>
+        <select name='first-month'>
+          <% for (var m of month) { %>
+             <option><%= m %></option>
+          <% } %>
+        </select>
+        <select name='next'>
+           <option value='0'>ส่งครั้งเดียว</option>
+           <option value='7'>ส่งทุกสัปดาห์</option>
+           <option value='14'>ส่งทุก 2 สัปดาห์</option>
+           <option value='30'>ส่งทุกเดือน</option>
+        </select>
+
       <% } %>
         <input name='name' 
           placeholder='ชื่อ' 
