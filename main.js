@@ -5,20 +5,25 @@ var ejs      = require('ejs')
 var mysql    = require('mysql')
 var database = { host:'localhost', database: 'web',
                  user:'james',     password: 'bond'}
+var bodyParser = require('body-parser')
+var readBody   = bodyParser.urlencoded({extended:true})
 server.engine('html', ejs.renderFile)
 server.listen(80)
-server.get('/apply', showApplyPage)
+server.get ('/apply', showApplyPage)
+server.post('/apply', readBody, saveMemberData)
 
 function showApplyPage(req, res) {
-  if (req.query.phone == null) {
-    var conn = mysql.createConnection(database)
-    conn.connect()
-    conn.query('select * from service', function(error, data) {
-      // res.send(data) // for web service
-      res.render('apply.html', {service: data})
-      conn.end()
-    })
-  } else {
+  var conn = mysql.createConnection(database)
+  conn.connect()
+  conn.query('select * from service', function(error, data) {
+    // res.send(data) // for web service
+    res.render('apply.html', {service: data})
+    conn.end()
+  })
+}
+function saveMemberData(req, res) {
+  res.send( req.body )
+  /*
     var phone = req.query.phone || ''
     var name  = req.query.name  || ''
     var address = req.query.address || ''
@@ -34,5 +39,5 @@ function showApplyPage(req, res) {
         conn.end()
       })
     }
-  }
+  */
 }
