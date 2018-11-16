@@ -21,8 +21,8 @@
           <input name='available[<%= i %>]' 
                  value='<%= service[i].id %>'
                  type='hidden'>
-          <input type='checkbox' 
-            name='service=[<%= i %>]'
+          <input type='checkbox'
+            name='service-<%= i %>'
             id='service-<%= i %>'>
           <label for='service-<%= i %>'>
             <%= service[i].name %> ( <%= service[i].price %> บาท )
@@ -30,21 +30,21 @@
         </div>
         <div class='form-row'>
           <div class='col'>
-            <select name='first-day' class='form-control'>
+            <select name='day[<%= i %>]' class='form-control'>
               <% for (var d = 1; d <= 31; d++) { %>
                 <option><%= d %></option>
               <% } %>
             </select>
           </div>
           <div class='col'>
-            <select name='first-month' class='form-control'>
+            <select name='month[<%= i %>]' class='form-control'>
               <% for (var m of month) { %>
                 <option><%= m %></option>
               <% } %>
             </select>
           </div>
           <div class='col'>
-            <select name='next' class='form-control'>
+            <select name='next[<%= i %>]' class='form-control'>
               <option value='0'>ส่งครั้งเดียว</option>
               <option value='7'>ส่งทุกสัปดาห์</option>
               <option value='14'>ส่งทุก 2 สัปดาห์</option>
