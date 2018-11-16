@@ -15,7 +15,7 @@
                       'กันยายน', 'ตุลาคม','พฤศจิกายน','ธันวาคม']
       %>
       <% for (var i of service) { %>
-        <div class='row'>
+        <div class='form-row'>
           <input type='checkbox' 
             name='service-<%= i.id %>'
             id='service-<%= i.id %>'>
@@ -23,7 +23,7 @@
             <%= i.name %> ( <%= i.price %> บาท )
           </label>
         </div>
-        <div class='row'>
+        <div class='form-row'>
           <div class='col'>
             <select name='first-day' class='form-control'>
               <% for (var d = 1; d <= 31; d++) { %>
@@ -63,6 +63,8 @@
       <style>
         form { max-width: 640px; }
         input,textarea { margin-bottom: 8px; }
+        .form-row { margin-bottom: 16px; }
+        
       </style>
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
