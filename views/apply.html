@@ -22,7 +22,8 @@
                  value='<%= service[i].id %>'
                  type='hidden'>
           <input type='checkbox'
-            name='service-<%= i %>'
+            name='service[]'
+            value='<%= i %>'
             id='service-<%= i %>'>
           <label for='service-<%= i %>'>
             <%= service[i].name %> ( <%= service[i].price %> บาท )

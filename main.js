@@ -43,17 +43,15 @@ function saveMemberData(req, res) {
     })
   }
 }
-function saveService(req, res, id) {
-  for (var i in req.body) {
-    if (i.startsWith("service-") && req.body[i] == "on") {
-      var index = parseInt( i.substring(8) ) // หาว่า subscribe อะไร
-      var sql = "insert into subscribe(member,service,first_day,next) values" +
-                "(?,?,?,?)"
-      var data = [id, req.body.available[index], 
-                  req.body.day[index] + ' ' + req.body.month[index],
-                  req.body.next[index] ]
+function saveService(req, res, mid) {
+  for (var i in req.body.service) {
+    var sid  = req.body.available[i]
+    var sql  = "insert into subscribe(member,service,first_day,next) values" +
+              "(?,?,?,?)"
+    var data = [mid, sid, 
+                  req.body.day[i] + ' ' + req.body.month[i],
+                  req.body.next[i] ]
       pool.query(sql, data, function() { } )
-    }
   }
   res.send(req.body)
 }
