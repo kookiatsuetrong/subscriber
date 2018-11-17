@@ -9,9 +9,18 @@
   <body>
     <div class='container'>
       <form method='post'>
-        <input name='price[0]' value='123'>
-        <input name='price[1]' value='456'>
-      <h3>โปรดเลือกบริการที่ต้องจัดส่ง</h3>
+        <h3>ใส่หมายเลขโทรศัพท์ และชื่อที่อยู่</h3>
+        <input name='phone' 
+          placeholder='หมายเลขโทรศัพท์'
+          class='form-control'>
+        <input name='name' 
+          placeholder='ชื่อ' 
+          class='form-control'>
+        <textarea name='address'
+          placeholder='ที่อยู่สำหรับจัดส่งสินค้า'
+          class='form-control'></textarea>      
+
+      <h3>เลือกสินค้าที่ต้องจัดส่ง</h3>
       <% var month = ['มกราคม','กุมภาพันธ์','มีนาคม','เมษายน',
                       'พฤษภาคม','มิถุนายน','กรกฎาคม','สิงหาคม',
                       'กันยายน', 'ตุลาคม','พฤศจิกายน','ธันวาคม']
@@ -55,15 +64,6 @@
         </div>
         
       <% } %>
-        <input name='name' 
-          placeholder='ชื่อ' 
-          class='form-control'>
-        <input name='phone' 
-          placeholder='หมายเลขโทรศัพท์'
-          class='form-control'>
-        <textarea name='address'
-          placeholder='ที่อยู่สำหรับจัดส่งสินค้า'
-          class='form-control'></textarea>
         <button class='btn btn-primary'>สมัครสมาชิก</button>
       </form>
       <style>
