@@ -26,6 +26,7 @@
                       'กันยายน', 'ตุลาคม','พฤศจิกายน','ธันวาคม']
       %>
       <% for (var i in service) { %>
+      <div class='item'>
         <div class='form-row'>
           <input name='available[<%= i %>]' 
                  value='<%= service[i].id %>'
@@ -63,7 +64,7 @@
             </select>
           </div>
         </div>
-        
+      </div>
       <% } %>
         <button class='btn btn-primary'>สมัครสมาชิก</button>
       </form>
@@ -78,6 +79,11 @@
         }
         label { font-size: 32px; color: gray; transition: color 0.2s linear; }
         label:hover { color: hotpink; }
+        .item { padding-left: 10px; padding-right: 10px; padding-bottom: 1px; 
+                border-radius: 5px; transition: background 0.25s linear; }
+        .item:hover {
+          background: whitesmoke;
+        }
       </style>
       <script>
         function toggle(index) {
