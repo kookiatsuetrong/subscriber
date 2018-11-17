@@ -71,11 +71,19 @@
         form { max-width: 640px; }
         input,textarea { margin-bottom: 8px; }
         .form-row { margin-bottom: 16px; }
-        .bar { display: none; }
+        .bar { opacity: 0.1; transition: opacity 0.5s linear; }
+        input[type=checkbox] {
+          transform: scale(2);   margin-top: 18px;
+          width: 32px;    margin-left: 20px;
+        }
+        label { font-size: 32px; color: gray; transition: color 0.2s linear; }
+        label:hover { color: hotpink; }
       </style>
       <script>
         function toggle(index) {
-          $('#bar-' + index).show()
+          var status = $('#service-' + index).is(':checked')
+          if (status == false) $('#bar-' + index).css('opacity', 0.1)
+          if (status == true)  $('#bar-' + index).css('opacity', 1)
         }
       </script>
     </div>
