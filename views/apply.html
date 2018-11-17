@@ -34,11 +34,11 @@
             name='service[]'
             value='<%= i %>'
             id='service-<%= i %>'>
-          <label for='service-<%= i %>'>
+          <label for='service-<%= i %>' class='product-name'>
             <%= service[i].name %> ( <%= service[i].price %> บาท )
           </label>
         </div>
-        <div class='form-row'>
+        <div class='form-row bar' id='bar-<%=i%>'>
           <div class='col'>
             <select name='day[<%= i %>]' class='form-control'>
               <% for (var d = 1; d <= 31; d++) { %>
@@ -70,7 +70,7 @@
         form { max-width: 640px; }
         input,textarea { margin-bottom: 8px; }
         .form-row { margin-bottom: 16px; }
-        
+        .bar { display: none; }
       </style>
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
