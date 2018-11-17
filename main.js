@@ -53,5 +53,6 @@ function saveService(req, res, mid) {
                   req.body.next[i] ]
       pool.query(sql, data, function() { } )
   }
-  res.send(req.body)
+  // res.send(req.body)
+  res.render('success.html')
 }
