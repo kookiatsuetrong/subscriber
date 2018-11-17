@@ -28,18 +28,18 @@
       <% for (var i in service) { %>
       <div class='item'>
         <div class='form-row'>
-          <input name='available[<%= i %>]' 
+            <input name='available[<%= i %>]' 
                  value='<%= service[i].id %>'
                  type='hidden'>
-          <input type='checkbox'
-            name='service[]'
-            value='<%= i %>'
-            id='service-<%= i %>'
-            onchange='toggle(<%= i %>)'>
-          <label for='service-<%= i %>' class='product-name'>
-            <%= service[i].name %> 
+            <input type='checkbox'
+              name='service[]'
+              value='<%= i %>'
+              id='service-<%= i %>'
+              onchange='toggle(<%= i %>)'>
+            <label for='service-<%= i %>' class='product-name'>
+              <%= service[i].name %> 
+            </label>
             <span class='price'><%= service[i].price %> บาท </span>
-          </label>
         </div>
         <div class='form-row bar' id='bar-<%=i%>'>
           <div class='col'>
@@ -79,14 +79,14 @@
           width: 32px;    margin-left: 20px;
         }
         label { font-size: 32px; color: gray; transition: color 0.2s linear; 
-                width: 100%; }
+              }
         label:hover { color: hotpink; }
         .item { padding-left: 10px; padding-right: 10px; padding-bottom: 1px; 
                 border-radius: 5px; transition: background 0.25s linear; }
         .item:hover {
           background: whitesmoke;
         }
-        .price { float: right; color: hotpink; }
+        .price { color: hotpink; font-size: 32px; margin-left: 20px; }
       </style>
       <script>
         function toggle(index) {
