@@ -65,5 +65,17 @@ function listProduct(req, res) {
   })
 }
 
+var mongo = require('mongodb')
 
-
+server.get('/api-0.9/list-book', listBook)
+function listBook(req, res) {
+  mongo.MongoClient.connect('mongodb://localhost',
+         {useNewUrlParser:true}, function(e,conn) {
+    var r = conn.db('ibook').collection('product').find()
+    r.toArray( function(e, data) {
+      for (var i in data)
+        delete data[i]._id
+      res.send(data)
+    })
+  })
+}
