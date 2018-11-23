@@ -61,6 +61,7 @@ server.get('/api-0.9/list-product', listProduct)
 
 function listProduct(req, res) {
   pool.query('select * from service', function(e,r) {
+    res.header('Access-Control-Allow-Origin', '*')
     res.send(r)
   })
 }
